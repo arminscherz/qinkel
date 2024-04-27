@@ -1,8 +1,8 @@
 {% if prices.length %}
 <section class="[ pad-top-700 gap-bottom-900 ]">
   <div class="[ inner-wrapper ] [ sf-flow ]">
-    <h2 class="[ post-list__heading ] [ text-700 md:text-800 ]">Products</h2>
-    <p>Please see our <a href="/faq">frequently asked questions</a> for details on how digital downloads are delivered and our return policy.</p>
+    <h2 class="[ post-list__heading ] [ text-700 md:text-800 ]">Qinkel Produkte</h2>
+    <p>Hol Dir jetzt Deine lebenslange Garantie! <a href="https://www.qinkel.com/Startseite.html#carousel_d7ee">Garantie holen</a> <br/>Hier ist eine Übersicht über die verfügbaren Qinkel Produkte</p>
     <ol class="[ pad-top-300 ] [ product ] [ ol-reset ]">
       {% for price in prices %}
       <li class="product-card sf-flow">
@@ -14,8 +14,8 @@
             >{{ price.product.name }}</a
           >
         </h3>
-        <img src="{% src price.product.metadata.mainImage %}"
-          srcset="{% srcset price.product.metadata.mainImage %}"
+        <img src="{{ price.product.metadata.mainImage }}"
+          srcset="{{ price.product.metadata.mainImage }}"
           alt="">
         <p>{{ price.product.description }}</p>
         <form action="/api/createCheckoutSession" method="POST">
@@ -25,7 +25,7 @@
             name="price_id"
             class="hidden"
           />
-          <button class="button" type="submit">Buy now {{ price.unit_amount | convertCentsToDollars }}</button>
+          <button class="button" type="submit">Jetzt kaufen {{ price.unit_amount | convertCentsToEuros }}</button>
         </form>
       </li>
       {% endfor %}

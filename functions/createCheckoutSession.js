@@ -8,9 +8,14 @@ exports.handler = async function (event, context) {
   const stripe = require("stripe")(api_key);
 
   const referer = event.headers.referer;
+  const origin = event.headers.origin;
   // JSON.parse doesn't work here
   const params = new URLSearchParams(event.body);
   const price_id = params.get("price_id");
+
+  console.log("context:", context);
+
+  console.log("event:", event);
 
   const session = await stripe.checkout.sessions.create({
     line_items: [
@@ -21,7 +26,7 @@ exports.handler = async function (event, context) {
     ],
     mode: "payment",
     // TODO: customize thanks page with order details https://stripe.com/docs/payments/checkout/custom-success-page
-    success_url: "https://sia.studio/thanks",
+    success_url: origin+"/thanks",
     // go back to page that they were on
     cancel_url: referer,
   });

@@ -1,17 +1,17 @@
 {
   "title": "Qinkel Testshop",
-  "url": "https://sia.studio",
-  "description": "Art, writing, crafting, & flavors by Sia Karamalegos",
+  "url": "https://qinkel.netlify.app/",
+  "description": "Testshop für JAM-Stack Qinkel Shop",
   "feed": {
-    "subtitle": "Art, writing, crafting, & flavors by Sia Karamalegos",
+    "subtitle": "Magnetkugeln und Geschicklichkeitsspiele von Qinkel",
     "filename": "feed.xml",
     "path": "/feed/feed.xml",
-    "url": "https://sia.codes/feed/feed.xml",
-    "id": "https://sia.codes/"
+    "url": "https://qinkel.netlify.app/feed/feed.xml",
+    "id": "https://qinkel.netlify.app/"
   },
   "author": {
-    "name": "Sia Karamalegos",
-    "email": "siakaramalegos@gmail.com"
+    "name": "Sia Karamalegos & Armin Scherz",
+    "email": "armin.scherz@spiralup.at"
   },
-  "domain": "sia.studio"
+  "domain": "qinkel.netlify.app"
 }

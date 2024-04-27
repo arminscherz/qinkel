@@ -2,8 +2,8 @@ const { DateTime } = require("luxon");
 const rootUrl = require('../_data/metadata.json').url
 
 module.exports = {
-  convertCentsToDollars: (cents) => {
-    return (cents / 100).toLocaleString("en-US", {style:"currency", currency:"USD"})
+  convertCentsToEuros: (cents) => {
+    return (cents / 100).toLocaleString("de-AT", {style:"currency", currency:"EUR"})
   },
   readableDateFromISO: (dateStr, formatStr = "dd LLL yyyy 'at' hh:mma") => {
     return DateTime.fromISO(dateStr).toFormat(formatStr);
