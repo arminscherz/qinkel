@@ -13,9 +13,9 @@ exports.handler = async function (event, context) {
   const params = new URLSearchParams(event.body);
   const price_id = params.get("price_id");
 
-  console.log("context:", context);
+  // console.log("context:", context);
 
-  console.log("event:", event);
+  // console.log("event:", event);
 
   const session = await stripe.checkout.sessions.create({
     line_items: [
@@ -29,6 +29,19 @@ exports.handler = async function (event, context) {
     success_url: origin+"/thanks",
     // go back to page that they were on
     cancel_url: referer,
+    invoice_creation:
+      {
+        enabled: true,
+      },
+    shipping_address_collection:
+      {
+        allowed_countries: ["AT", "DE", "CH"],
+      },
+    shipping_options: [
+      {
+        shipping_rate: "shr_1PAZyiGxCWD7dpD1lgVV8fKq",
+      }
+    ],
   });
 
   return {

@@ -1,25 +1,22 @@
 ---
-layout: layouts/base.njk
-title: Vielen Dank für Ihre Bestellung!
-templateClass: tmpl-post
+layout: layouts/home.njk
+tags:
+  - nav
+navtitle: Kontakt
+title: "Vielen Dank für Ihre Bestellung!"
+description: "Dankeschön"
+date: 2024-04-28
 ---
-
-{% set introHeading = title %}
-{% set introSummary %}{{ content | safe }}{% endset %}
-
-<!-- TODO: add order details, use icons instead of numbers - download and receipt -->
-<main id="main-content" tabindex="-1">
-  {% include "intro.njk" %}
-
-  <section class="[ post-list ] [ pad-top-700 gap-bottom-900 ]">
-  <div class="[ inner-wrapper ] [ sf-flow ]">
-    <p>Vielen Dank für Ihre Bestellung! Sie werden die folgenden Informationen per E-Mail erhalten:</p>
-    <ol>
-      <li>Ihre Rechnung</li>
-      <li>Informationen zum Versand Ihrer Ware</li>
-    </ol>
-    <p>Wenn Sie die Rechnung nicht in den nächsten Minuten erhalten, prüfen Sie bitte  <strong>Ihren E-Mail Spam / Junk Ordner</strong>. Sollten weiterhin Probleme auftreten, kontaktieren Sie uns bitte unter <a href="office@qinkel.com">office@qinkel.com</a>.</p>
-  </div>
-</main>
-
-<main id="main-content" tabindex="-1">
+    <section class="u-clearfix" id="sec-a226">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <h2 class="u-text u-text-custom-color-2 u-text-default u-text-1">Vielen Dank für Ihre Bestellung</h2>
+        <p class="u-text u-text-default u-text-2"> Stetho&nbsp;OG<br>
+          Vielen Dank für Ihre Bestellung! Sie werden die folgenden Informationen per E-Mail erhalten:</p>
+        <ol>
+          <li>Ihre Rechnung</li>
+          <li>Informationen zum Versand Ihrer Ware</li>
+        </ol>
+        <p>Wenn Sie die Rechnung nicht in den nächsten Minuten erhalten, prüfen Sie bitte  <strong>Ihren E-Mail Spam / Junk Ordner</strong>. Sollten weiterhin Probleme auftreten, kontaktieren Sie uns bitte unter <a href="office@qinkel.com">office@qinkel.com</a>.
+        </p>
+      </div>
+    </section>

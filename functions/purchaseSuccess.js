@@ -1,35 +1,5 @@
-// FYI this full integration is not yet tested/working (was in parts before though)
-const AWS = require("aws-sdk");
-const S3_BUCKET = "sia-studio-downloads";
+
 const environment = process.env.CONTEXT;
-
-// Gotcha: AWS_ is a reserved prefix in netlify so you need to start it with something else
-function getSignedUrl(filename) {
-  AWS.config = new AWS.Config({
-    accessKeyId: process.env.MY_AWS_ACCESS_KEY,
-    secretAccessKey: process.env.MY_AWS_SECRET_KEY,
-    region: "us-east-1",
-    signatureVersion: "v4",
-  });
-
-  const s3 = new AWS.S3();
-
-  // 60 seconds for dev/staging or 1 week in production
-  const expirationTime = environment !== "production" ? 60 : 604800
-
-  return s3.getSignedUrl("getObject", {
-    Key: filename,
-    Bucket: S3_BUCKET,
-    Expires: expirationTime,
-  });
-}
-
-// Sendgrid
-// using Twilio SendGrid's v3 Node.js Library
-// https://github.com/sendgrid/sendgrid-nodejs
-const templateId = "d-a2083ee6711e419399ad3ecb0ec363cd";
-const sgMail = require("@sendgrid/mail");
-const fromEmail = "sia@sia.studio";
 
 const environmentKeys = {
   production: {
@@ -48,6 +18,8 @@ const apiKeys =
 const stripe = require("stripe")(apiKeys.STRIPE_KEY);
 
 exports.handler = async function (event, context) {
+  console.log("purchaseSuccess START");
+
   const { body, headers } = event;
 
   try {
@@ -62,35 +34,84 @@ exports.handler = async function (event, context) {
     if (stripeEvent.type === "checkout.session.completed") {
       // Extract the checkout object itself from the event
       const eventObject = stripeEvent.data.object;
+      console.log("eventObject: ", eventObject);
 
       const items = await stripe.checkout.sessions.listLineItems(
         eventObject.id,
         { expand: ["data.price.product"] }
       );
 
-      // The aws digital download filename to fulfill the order
+      console.log("items: ", items);
+
       const product = items.data[0]["price"]["product"];
-      const filename = product.metadata.filename;
       const itemName = product.name;
 
-      // Fulfilmment via aws and sendgrid ...
-      const signedUrl = getSignedUrl(filename);
 
-      sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+      const emailSenderEmail = "noreply@serbliss.at";
+      const emailSenderName = "Qinkel JAM-Stack Shop";
 
-      const msg = {
-        to: eventObject.customer_details.email,
-        from: fromEmail, // the verified sender
-        templateId,
-        dynamic_template_data: {
-          itemName,
-          filename,
-          url: signedUrl,
-        },
-      };
+      const emailReceipientEmail = "armin.scherz@spiralup.at";
+      const emailReceipientName = "Qinkel Fullfillment Team";
 
-      await sgMail.send(msg);
-      console.log('Email sent!');
+      const emailReplyToEmail = "office@qinkel.com";
+      const emailReplyToName = "Qinkel Office";
+
+      const ccReceivers = [];
+      //ccReceivers.push({ Email: senderEmail, Name: senderName });
+
+      const emailBetreff =`Neue Qinkel Bestellung`;
+
+      const emailText =`Neue Bestellung für ${itemName} `;
+/*
+      // MailJet Basic Auth vorbereiten
+      const api_key = process.env.MAILJET_API_KEY;
+      const api_secret = process.env.MAILJET_SECRET_KEY;
+      const auth = 'Basic ' + Buffer.from( api_key + ':' + api_secret).toString('base64');
+
+      // Freigabe-Email per MailJet senden
+      const response = await fetch(
+      'https://api.mailjet.com/v3.1/send', 
+      {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': auth
+          },
+          body: JSON.stringify({
+              Messages: [
+                  {
+                      From: {
+                          Email: emailSenderEmail,
+                          Name: emailSenderName
+                      },
+                      To: [
+                          {
+                              Email: emailReceipientEmail,
+                              Name: emailReceipientName
+                          }
+                      ],
+                      Cc: ccReceivers,
+                      ReplyTo: {
+                          Email: emailReplyToEmail,
+                          Name: emailReplyToName
+                      },
+                      Subject: emailBetreff,
+                      TextPart: emailText,
+                  }
+              ]
+          }),
+        }
+      );
+
+      console.log('response: ', response);
+
+      if (!response.ok) {
+        throw new Error('Fehler beim Versenden durch Mailjet');
+      }
+*/
+      console.log('Email sent successfully!');
+
+      console.log("purchaseSuccess END");
     }
 
     // Response sent back to stripe - everything is ok!
