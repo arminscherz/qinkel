@@ -14,8 +14,8 @@
     "url": "git://github.com/11ty/eleventy-base-blog.git"
   },
   "author": {
-    "name": "Sia Karamalegos",
-    "url": "https://sia.studio/"
+    "name": "Armin Scherz",
+    "url": "https://spiralup.at/"
   },
   "license": "CC-BY-NC-SA-4.0",
   "bugs": {
@@ -34,8 +34,6 @@
     "stripe": "^8.199.0"
   },
   "dependencies": {
-    "@sendgrid/mail": "^7.6.0",
-    "aws-sdk": "^2.1063.0",
     "lodash": "^4.17.20"
   },
   "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
