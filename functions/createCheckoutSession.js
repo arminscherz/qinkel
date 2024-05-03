@@ -12,6 +12,7 @@ exports.handler = async function (event, context) {
   // JSON.parse doesn't work here
   const params = new URLSearchParams(event.body);
   const price_id = params.get("price_id");
+  const quantity = params.get("quantity");
 
   // console.log("context:", context);
 
@@ -21,7 +22,7 @@ exports.handler = async function (event, context) {
     line_items: [
       {
         price: price_id,
-        quantity: 1,
+        quantity: quantity,
       },
     ],
     mode: "payment",

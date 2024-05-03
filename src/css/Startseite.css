@@ -1130,9 +1130,10 @@
   margin-bottom: 10px;
 }
 
-.add-to-cart-button {
+.cta-button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: blue;
+  border-radius: 8px;
   color: #fff;
   border: none;
   cursor: pointer;

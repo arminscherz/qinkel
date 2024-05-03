@@ -62,7 +62,7 @@ exports.handler = async function (event, context) {
       const emailBetreff =`Neue Qinkel Bestellung`;
 
       const emailText =`Neue Bestellung für ${itemName} `;
-/*
+
       // MailJet Basic Auth vorbereiten
       const api_key = process.env.MAILJET_API_KEY;
       const api_secret = process.env.MAILJET_SECRET_KEY;
@@ -108,7 +108,7 @@ exports.handler = async function (event, context) {
       if (!response.ok) {
         throw new Error('Fehler beim Versenden durch Mailjet');
       }
-*/
+
       console.log('Email sent successfully!');
 
       console.log("purchaseSuccess END");

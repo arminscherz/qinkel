@@ -1,12 +1,18 @@
 ---
 layout: layouts/base.njk
+pagination:
+  data: prices
+  size: 1
+  alias: price
 tags:
   - nav
 navtitle: Shop
 title: "Qinkel Magnetkugeln - Shop"
 description: "JAM-Stack Webshop"
 date: 2024-04-28
+permalink: /{{ price.product.name | slug}}.html
 ---
+
     <section class="u-align-left u-clearfix u-section-3" style="background: white;">
       <div class="u-clearfix u-sheet">
         <a href="/Shop"><< zurück zum Katalog</a>
@@ -23,28 +29,31 @@ date: 2024-04-28
           </div>
 
           <div class="details-column">
-            <h1 class="product-title">100 Qinkel Magnetkugeln TEST</h1>
-            <div class="product-price">€ 14,99</div>
-            <div>Preis inkl. MwSt. (20%) € 2,50</div>
-            <br/>
-            <span class="product-description">Es lässt Dich einfach nicht mehr los - wie eben ein Magnet.
-Egal ob jung oder alt, einmal in der Hand, legst du sie kaum mehr weg.</span>
-            <br/>
-            <span class="product-description">Anzahl</span>
-            <select name="quantity">
-              <option value="1">1 Packung</option>
-              <option value="2">2 Packungen</option>
-              <option value="3">3 Packungen</option>
-              <option value="4">4 Packungen</option>
-              <option value="5">5 Packungen</option>
-              <option value="6">6 Packungen</option>
-              <option value="7">7 Packungen</option>
-              <option value="8">8 Packungen</option>
-              <option value="9">9 Packungen</option>
-              <option value="10">10 Packungen</option>
-            </select>
-            <br/>
-            <button class="add-to-cart-button">Zur Kassa gehen</button>
+            <form action="/api/createCheckoutSession" method="POST">
+              <h1 class="product-title">{{ price.product.name }}</h1>
+              <div class="product-price">{{ price.unit_amount | convertCentsToEuros }} pro Packung</div>
+              <div>Preis inkl. MwSt. (20%) von {{ (price.unit_amount / 6) | convertCentsToEuros }}</div>
+              <div>Preis exkl. Versandkosten von {{ shippingRates[0].fixed_amount.amount | convertCentsToEuros }}</div>
+              <br/>
+              <span class="product-description">Anzahl</span>
+              <select name="quantity">
+                <option value="1">1 Packung</option>
+                <option value="2">2 Packungen</option>
+                <option value="3">3 Packungen</option>
+                <option value="4">4 Packungen</option>
+                <option value="5">5 Packungen</option>
+                <option value="6">6 Packungen</option>
+                <option value="7">7 Packungen</option>
+                <option value="8">8 Packungen</option>
+                <option value="9">9 Packungen</option>
+                <option value="10">10 Packungen</option>
+              </select>
+              <br/><br/>
+              <b>lieferbar.</b>
+              <br/><br/>
+              <input type="hidden" value="{{ price.id }}" name="price_id" class="hidden"/>
+              <button class="cta-button" type="submit">Zur Kassa gehen</button>
+            </form>
             <br/>
             <b>Produkt weiterempfehlen</b>  
               
@@ -87,16 +96,15 @@ Egal ob jung oder alt, einmal in der Hand, legst du sie kaum mehr weg.</span>
         <h2>Produktbeschreibung:</h2>
         <h4>...und was ist jetzt das Besondere an unseren Qinkel® Magnetkugeln?</h4>
         <p>
-          Es lässt Dich einfach nicht mehr los - wie eben ein Magnet.<br/>
-          Egal ob jung oder alt, einmal in der Hand, legst du sie kaum mehr weg. Jeder der diese kleinen Kugeln das erste Mal sieht, nimmt sie sofort in die Hand und beginnt damit zu spielen, zu bauen oder hat sie einfach nur in der Hand, weil sie sich gut anfühlen.<br/>
+          {{ price.product.description }}
           <br/>
           So ist es natürlich auch uns gegangen - und wir sind überzeugt, so wird es auch Dir gehen!<br/>
         </p>
 
-        <p><b>Anzahl:</b> 100</p>
-        <p><b>Material:</b> Neodym Magneten</p>
-        <p><b>Farbe:</b> Mehrfarbig</p>
-        <p><b>Durchmesser:</b> 5 mm</p>
+        <p><b>Anzahl:</b> {{ price.product.metadata.Anzahl }}</p>
+        <p><b>Material:</b> {{ price.product.metadata.Material }}</p>
+        <p><b>Farbe:</b> {{ price.product.metadata.Farbe }}</p>
+        <p><b>Durchmesser:</b> {{ price.product.metadata.Durchmesser }}</p>
 
 
         <h4>Achtung:</h4>
