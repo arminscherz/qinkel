@@ -50,7 +50,7 @@ exports.handler = async function (event, context) {
       const emailSenderEmail = "noreply@serbliss.at";
       const emailSenderName = "Qinkel JAM-Stack Shop";
 
-      const emailReceipientEmail = "armin.scherz@spiralup.at";
+      const emailReceipientEmail = "office@qinkel.com";
       const emailReceipientName = "Qinkel Fullfillment Team";
 
       const emailReplyToEmail = "office@qinkel.com";
@@ -59,9 +59,10 @@ exports.handler = async function (event, context) {
       const ccReceivers = [];
       //ccReceivers.push({ Email: senderEmail, Name: senderName });
 
-      const emailBetreff =`Neue Qinkel Bestellung`;
+      const emailBetreff =`Neue TEST-Qinkel Bestellung`;
 
-      const emailText =`Neue Bestellung für ${itemName} `;
+      const emailText =`Neue TEST-Bestellung für ${itemName} 
+**** Hier kommen dann alle Kundendaten, Lieferadressen usw. hin, bin noch nicht dazu gekommen das einzubauen, ist aber nur ein Griff :) *****`;
 
       // MailJet Basic Auth vorbereiten
       const api_key = process.env.MAILJET_API_KEY;
