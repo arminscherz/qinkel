@@ -50,7 +50,7 @@ exports.handler = async function (event, context) {
       const emailSenderEmail = "noreply@serbliss.at";
       const emailSenderName = "Qinkel JAM-Stack Shop";
 
-      const emailReceipientEmail = "office@qinkel.com";
+      const emailReceipientEmail = "armin.scherz@spiralup.at";
       const emailReceipientName = "Qinkel Fullfillment Team";
 
       const emailReplyToEmail = "office@qinkel.com";
