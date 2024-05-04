@@ -19,12 +19,20 @@ permalink: /{{ price.product.name | slug}}.html
 
         <div class="grid-container">
           <div class="gallery-column">
-            <img src="/images/products/100_1.jpeg" class="main-image" id="mainImage" alt="Main Image">
+            <div class="carousel-container" ontouchstart="handleTouchStart(event)" ontouchmove="handleTouchMove(event)" ontouchend="handleTouchEnd(event)">
+              <!-- Clickable areas -->
+              <span class="clickable-area left-clickable-area" onclick="showPreviousImage()">&#10094;</span>
+              <div class="clickable-area right-clickable-area" onclick="showNextImage()">&#10095;</div>
+              
+              <img src="{{ price.product.metadata["image1"] }}" class="main-image" id="mainImage" alt="Hauptbild für {{ price.product.name }}">
+            </div>
+            
             <div class="thumbnails" id="thumbnails">
-              <img src="/images/products/100_1.jpeg" class="thumbnail" alt="Thumbnail 1" onclick="changeImage(this)">
-              <img src="/images/products/100_2.jpeg" class="thumbnail" alt="Thumbnail 2" onclick="changeImage(this)">
-              <img src="/images/products/100_3.jpeg" class="thumbnail" alt="Thumbnail 2" onclick="changeImage(this)">
-              <!-- Add more thumbnails as needed -->
+              {% for i in range(0, 100) -%}
+                {% if price.product.metadata["image"+i] -%}
+                  <img src="{{ price.product.metadata["image"+i] }}" class="thumbnail" id="thumbnail{{ i-1 }}" alt="Thumbnail für Produktbild Nr. {{ i }} für {{ price.product.name }}" onclick="changeImage(this)">
+                {%- endif %}
+              {%- endfor %}
             </div>
           </div>
 
@@ -77,18 +85,71 @@ permalink: /{{ price.product.name | slug}}.html
         </div>
 
         <script>
+          // Get all carousel images
+          var images = document.querySelectorAll('.thumbnail');
+
           // Function to change the main image when a thumbnail is clicked
           function changeImage(thumbnail) {
             // Get the source of the clicked thumbnail
             var newImageSrc = thumbnail.src;
             
-            // Get the main image element
-            var mainImage = document.getElementById('mainImage');
-            
             // Set the source of the main image to the clicked thumbnail's source
-            mainImage.src = newImageSrc;
+            document.getElementById('mainImage').src = newImageSrc;
+
+            // Highlight the currently selected thumbnail
+            images.forEach(function(element) {
+              element.classList.remove('selected-thumbnail');
+            });
+
+            thumbnail.classList.add('selected-thumbnail');
           }
 
+          // Set index to keep track of current image
+          var currentIndex = 0;
+          images[currentIndex].classList.add('selected-thumbnail');
+
+          // Function to show the next image
+          function showNextImage() {
+            // Increment index to show the next image
+            currentIndex = (currentIndex + 1) % images.length;
+
+            // Display the new thumbnail's image as the main image
+            changeImage(document.getElementById('thumbnail'+currentIndex));
+          }
+
+          // Function to show the previous image
+          function showPreviousImage() {
+            // Decrement index to show the previous image
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            
+            // Display the new thumbnail's image as the main image
+            changeImage(document.getElementById('thumbnail'+currentIndex));
+          }
+
+          // Variables for touch event handling
+          var touchStartX = 0;
+          var touchEndX = 0;
+
+          // Function to handle touchstart event
+          function handleTouchStart(event) {
+            touchStartX = event.touches[0].clientX;
+          }
+
+          // Function to handle touchmove event
+          function handleTouchMove(event) {
+            touchEndX = event.touches[0].clientX;
+          }
+
+          // Function to handle touchend event
+          function handleTouchEnd(event) {
+            if (touchEndX < touchStartX) {
+              // Swipe left, show next image
+              showNextImage();
+            } else if (touchEndX > touchStartX) {
+              // Swipe right, show previous image
+              showPreviousImage();
+            }
+          }
         </script>
       </div>
 

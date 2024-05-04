@@ -1085,17 +1085,27 @@
 /* Styles for the gallery */
 .gallery-column {
   width: 100%; /* Take up full width */
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.carousel-container {
+  width: 100%; /* Take up full width */
+  height: auto;
+  margin: 0 auto;
+  position: relative;
 }
 
 .main-image {
   width: 100%; /* Take up full width */
   height: auto;
-  border: 1px solid #ccc;
+  border: none;
   margin-bottom: 20px;
 }
 
 .thumbnails {
-  display: flex;
+  display: float;
   gap: 3px;
   /*flex-direction: column;*/
 }
@@ -1103,9 +1113,13 @@
 .thumbnail {
   width: 20%; /* Adjust as needed */
   height: auto;
-  border: 1px solid #ccc;
+  border: none;
   margin-bottom: 5px;
   cursor: pointer;
+}
+
+.selected-thumbnail {
+  border: 2px solid darkgray;
 }
 
 /* Styles for the product details */
@@ -1149,4 +1163,30 @@
   .grid-container {
     grid-template-columns: 1fr;
   }
+}
+
+/* Styles for clickable areas */
+.clickable-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  font-size: 48px;
+  bottom: 0;
+  width: 20%; /* Adjust as needed */
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0); /* transparent background */
+  color: rgba(0, 0, 0, 0.3); /* semi-transparent foreground */
+  z-index: 1; /* Ensure clickable areas are above images */
+}
+
+.left-clickable-area {
+  left: 0;
+}
+
+.right-clickable-area {
+  right: 0;
 }

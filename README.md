@@ -1,19 +1,19 @@
 
 # qinkel webshop
 
-This webshop is based on sia.codes and the following tutorial: https://sia.codes/posts/serverless-ecommerce-store/
+This webshop is based on sia.codes and the following tutorial: https://sia.codes/posts/serverless-ecommerce-store/ (https://dev.to/stripe/building-an-ecommerce-store-13-managing-products-prices-with-examples-in-ruby-iba)
 Frameworks used [Eleventy](https://github.com/11ty/eleventy) 11ty blog starter and Hylia. It's a mish-mash with a lot of custom code.
 
 
 ## Dev & Test Tools
 - Stripe CLI https://docs.stripe.com/stripe-cli
-- Stipe Events (z.B. Checkout complete) an lokalen Endpunkt weiterleiten: 
+- Stipe Events (z.B. Checkout complete) an lokalen Endpunkt weiterleiten: (https://docs.stripe.com/webhooks#test-webhook)
   - Shell Kommando: stripe listen --forward-to localhost:8888/api/purchaseSuccess 
   - Diese Kommado liefert das webhook signing secret
   - Dieses in der Env-Variable STRIPE_WEBHOOK_SECRET_TEST eintragen
   - Webshop in zweitem Terminal öffnen
 - Test-Kreditkarte 4242 4242 4242 4242 , Expiry Date in der Zukunft, CVS 123
-- Stripe Events erneut senden:
+- Stripe Events erneut senden: (https://docs.stripe.com/cli/events/resend)
   - Im Stripe Listen - Fenster werden event ids gelogged
   - Die {{ Event-ID }} für den Typ checkout.session.completed raussuchen
   - Neues Command-Fenster mit Komande stripe events resend {{ Event-ID }}
