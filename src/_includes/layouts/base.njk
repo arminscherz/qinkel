@@ -200,14 +200,13 @@
       <div class="u-container-layout u-container-layout-1">
         <h2 class="u-custom-font u-font-oswald u-text u-text-body-alt-color u-text-1">Lebenslange Garantie<br>
         </h2>
-        <p class="u-text u-text-body-alt-color u-text-2">Sollte der Fall eintreten,&nbsp;<br>dass Deine Qinkel Kugeln sich abnutzen
-          <br>&nbsp;und der Lack abblättert,&nbsp;<br>
-          <span style="font-weight: 700;">ersetzten</span> wir Dir diese&nbsp;<br>– ohne Wenn und Aber -<br>
-          <span style="font-weight: 700;">kostenfrei</span> .<br>
-          <br>Das ist unser ehrliches Qualitätsversprechen.<br>
-          <br>
-          <span style="font-weight: 700;">Tom &amp; Stefan von Qinkel</span>
-        </p>
+        <p class="u-text u-text-body-alt-color u-text-2">Sollte der Fall eintreten,&nbsp;<br>dass Deine Qinkel Kugeln sich abnutzen<br>&nbsp;und der Lack abblättert,&nbsp;<br>
+            <span style="font-weight: 700;">ersetzten</span> wir Dir diese&nbsp;<br>– ohne Wenn und Aber -<br>
+            <span style="font-weight: 700;">kostenfrei</span> .<br>
+            <br>Das ist unser ehrliches Qualitätsversprechen.<br>
+            <br>
+            <span style="font-weight: 700;">Tom &amp; Stefan von Qinkel</span>
+          </p>
         <span class="u-file-icon u-icon u-icon-1"><img src="images/1156677.png" alt=""></span>
       </div>
       <button class="u-dialog-close-button u-icon u-text-white u-icon-2">
@@ -221,14 +220,25 @@
       </div>
     </section>
 
+    <script>
+      document.getElementById('carousel_d559').addEventListener('scroll', function(event) {
+        // Handle scroll event on the overlay
+        console.log('Overlay scrolled');
+        // Prevent the event from bubbling up to parent elements
+        event.stopPropagation();
+      });
+    </script>>
+
     <style>
       .u-dialog-section-12 .u-image-1 {
         width: 636px;
-        min-height: 1099px;
+        /*min-height: 1099px;*/
+        min-height: 500px;
         box-shadow: 9px 9px 4px 0 rgba(0,0,0,0.2);
         background-image: url("images/fdfddf.jpg");
         background-position: 50% 50%;
-        margin: 113px auto 60px calc(((100% - 1140px) / 2) + 217px);
+        /*margin: 113px auto 60px calc(((100% - 1140px) / 2) + 217px);*/
+        margin: 50px auto 50px calc(((100% - 1140px) / 2) + 217px);
       }
 
       .u-dialog-section-12 .u-container-layout-1 {
@@ -237,22 +247,29 @@
 
       .u-dialog-section-12 .u-text-1 {
         text-transform: uppercase;
-        font-size: 3.75rem;
+        /*font-size: 3.75rem;*/
+        font-size: 2rem;
         font-weight: 700;
         font-family: Oswald, sans-serif;
-        margin: 73px 20px 0;
+        /*margin: 73px 20px 0;*/
+        margin: 35px 20px 0;
       }
 
       .u-dialog-section-12 .u-text-2 {
-        line-height: 1.6;
-        font-size: 1.5rem;
+        /*line-height: 1.6;*/
+        font-size: 1.1rem;
+        /*font-size: 1.5rem;*/
+        font-size: 1.00rem;
         margin: 73px 0 0 40px;
       }
 
       .u-dialog-section-12 .u-icon-1 {
-        height: 133px;
-        width: 133px;
-        margin: 80px auto 0;
+        /*height: 133px;
+        width: 133px;*/
+        height: 60px;
+        width: 60px;       
+        /*margin: 80px auto 0;*/
+        margin: 40px auto 0;
       }
 
       .u-dialog-section-12 .u-icon-2 {
