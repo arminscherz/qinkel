@@ -34,16 +34,21 @@ exports.handler = async function (event, context) {
     if (stripeEvent.type === "checkout.session.completed") {
       // Extract the checkout object itself from the event
       const eventObject = stripeEvent.data.object;
-      console.log("eventObject: ", eventObject);
+      //console.log("eventObject: ", eventObject);
 
       const items = await stripe.checkout.sessions.listLineItems(
         eventObject.id,
         { expand: ["data.price.product"] }
       );
 
-      console.log("items: ", items);
+      //console.log("items: ", items);
+
+      //console.log("price: ", items.data[0]["price"]);
 
       const product = items.data[0]["price"]["product"];
+
+      //console.log("product: ", product);
+
       const itemName = product.name;
 
 
@@ -61,8 +66,18 @@ exports.handler = async function (event, context) {
 
       const emailBetreff =`Neue TEST-Qinkel Bestellung`;
 
-      const emailText =`Neue TEST-Bestellung für ${itemName} 
-**** Hier kommen dann alle Kundendaten, Lieferadressen usw. hin, bin noch nicht dazu gekommen das einzubauen, ist aber nur ein Griff :) *****`;
+      const emailText =`Neue TEST-Bestellung für:
+Produkt: ${product.name}
+Anzahl: ${items.data[0].quantity}
+
+Kunde: ${eventObject.customer_details.name} 
+Kunden-Email: ${eventObject.customer_details.email} 
+
+Liefer-Adresse: 
+${eventObject.customer_details.address.line1} 
+${eventObject.customer_details.address.line2}
+${eventObject.customer_details.address.postal_code} ${eventObject.customer_details.address.city} 
+${eventObject.customer_details.address.state}, ${eventObject.customer_details.address.country}`;
 
       // MailJet Basic Auth vorbereiten
       const api_key = process.env.MAILJET_API_KEY;
