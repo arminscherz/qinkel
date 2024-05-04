@@ -43,7 +43,7 @@ permalink: /{{ price.product.name | slug}}.html
               <div>Preis inkl. MwSt. (20%) von {{ (price.unit_amount / 6) | convertCentsToEuros }}</div>
               <div>Preis exkl. Versandkosten von {{ shippingRates[0].fixed_amount.amount | convertCentsToEuros }}</div>
               <br/>
-              <span class="product-description">Anzahl</span>
+              <span class="product-description">Anzahl:&nbsp;</span>
               <select name="quantity">
                 <option value="1">1 Packung</option>
                 <option value="2">2 Packungen</option>
@@ -57,7 +57,7 @@ permalink: /{{ price.product.name | slug}}.html
                 <option value="10">10 Packungen</option>
               </select>
               <br/><br/>
-              <b>lieferbar.</b>
+              <b>lieferbar</b>
               <br/><br/>
               <input type="hidden" value="{{ price.id }}" name="price_id" class="hidden"/>
               <button class="cta-button" type="submit">Zur Kassa gehen</button>
@@ -65,17 +65,17 @@ permalink: /{{ price.product.name | slug}}.html
             <br/>
             <b>Produkt weiterempfehlen</b>  
               
-              <a class="ec-likely__widget ec-likely__widget--facebook" target="_blank" href="https://facebook.com/sharer/sharer.php?u=http%3A%2F%2Fstore97388005.company.site%2Fshared-products%2F623720426%3Fref%3Dv1%3A623720426%3A1949249303">
+              <a class="ec-likely__widget ec-likely__widget--facebook" target="_blank" href="https://facebook.com/sharer/sharer.php?u={{ metadata.url | urlencode}}{{ price.product.name | slug}}">
                 <span class="ec-likely__icon ec-likely__icon--facebook"><svg height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M13 0H3C1 0 0 1 0 3v10c0 2 1 3 3 3h5V9H6V7h2V5c0-2 2-2 2-2h3v2h-3v2h3l-.5 2H10v7h3c2 0 3-1 3-3V3c0-2-1-3-3-3z"></path></svg></span>
                 <span class="ec-likely__button">Weiterempfehlen</span>
               </a>
 
-              <a class="ec-likely__widget ec-likely__widget--twitter" target="_blank" href="https://twitter.com/intent/tweet/?text=100%20Qinkel%20Magnetkugeln&amp;url=http%3A%2F%2Fstore97388005.company.site%2Fshared-products%2F623720426%3Fref%3Dv1%3A623720426%3A1949249303">
+              <a class="ec-likely__widget ec-likely__widget--twitter" target="_blank" href="https://twitter.com/intent/tweet/?text=100%20Qinkel%20Magnetkugeln&amp;url={{ metadata.url | urlencode}}{{ price.product.name | slug}}">
                 <span class="ec-likely__icon ec-likely__icon--twitter"><svg height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg" fill="#000000"><path d="M9.634 6.81 14.857 1h-2.285l-3.99 4.433L5.143 1H0l5.817 7.525L0 15h2.286L6.88 9.878 10.857 15H16L9.634 6.81Zm-6.8-4.422H4.48l8.686 11.247H11.52L2.834 2.388Z"></path></svg></span>
                 <span class="ec-likely__button">Weiterempfehlen</span>
               </a>
 
-              <a class="ec-likely__widget ec-likely__widget--pinterest" target="_blank" href="https://pinterest.com/pin/create/button/?url=http%3A%2F%2Fstore97388005.company.site%2Fshared-products%2F623720426%3Fref%3Dv1%3A623720426%3A1949249303&amp;media=https%3A%2F%2Fd2j6dbq0eux0bg.cloudfront.net%2Fimages%2F97388005%2F4088771269.jpg&amp;description=100%20Qinkel%20Magnetkugeln">
+              <a class="ec-likely__widget ec-likely__widget--pinterest" target="_blank" href="https://pinterest.com/pin/create/button/?url={{ metadata.url | urlencode }}{{ price.product.name | slug }};media={{ metadata.url | urlencode }}{{ price.product.metadata["image1"] | urlencode }}&amp;description={{ price.product.name | urlencode}}">
                 <span class="ec-likely__icon ec-likely__icon--pinterest"><svg height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M7.99 0c-4.417 0-8 3.582-8 8 0 3.39 2.11 6.284 5.086 7.45-.07-.633-.133-1.604.028-2.295.145-.624.938-3.977.938-3.977s-.24-.48-.24-1.188c0-1.112.645-1.943 1.448-1.943.683 0 1.012.512 1.012 1.127 0 .686-.437 1.713-.663 2.664-.19.796.398 1.446 1.184 1.446 1.422 0 2.515-1.5 2.515-3.664 0-1.915-1.377-3.255-3.343-3.255-2.276 0-3.612 1.707-3.612 3.472 0 .688.265 1.425.595 1.826.065.08.075.15.055.23-.06.252-.195.796-.222.907-.035.146-.116.177-.268.107-1-.465-1.624-1.926-1.624-3.1 0-2.523 1.835-4.84 5.287-4.84 2.775 0 4.932 1.977 4.932 4.62 0 2.757-1.74 4.976-4.152 4.976-.81 0-1.573-.42-1.834-.92l-.498 1.903c-.18.695-.668 1.566-.994 2.097.75.232 1.544.357 2.37.357 4.417 0 8-3.582 8-8s-3.583-8-8-8z"></path></svg></span>
                 <span class="ec-likely__button">Auf Pinterest veröffentlichen</span>
               </a>

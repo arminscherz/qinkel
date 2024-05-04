@@ -1051,6 +1051,33 @@
   }
 }
 
+.ec-likely__widget {
+  display: inline-block;
+  position: relative;
+  height: 22px;
+  margin: 10px 0 0 10px;
+  border-radius: 3px;
+  hover: blue;
+  color: #111;
+  font-size: 14px;
+  line-height: 20px;
+  vertical-align: top;
+  white-space: nowrap;
+  transition: background .33s ease-out, color .33s ease-out, fill .33s ease-out;
+}
+
+.ec-likely__widget--facebook {
+  fill: #425497;
+}
+
+.ec-likely__widget--twitter {
+  fill: #000;
+}
+
+.ec-likely__widget--pinterest {
+  fill: #cc002b;
+}
+
 /* [1] The container */
 .img-hover-zoom {
   height: 300px; /* [1.1] Set it as per your need */

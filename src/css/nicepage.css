@@ -3188,7 +3188,7 @@ base {
   display: none;
 }
 a {
-  /*color: #259bca;*/
+  color: #111111;
   text-decoration: none;
 }
 a:hover {
