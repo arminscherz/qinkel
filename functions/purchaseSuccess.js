@@ -102,8 +102,8 @@ ${eventObject.customer_details.address.state}, ${eventObject.customer_details.ad
                       },
                       To: [
                           {
-                              Email: emailReceipientEmail,
-                              Name: emailReceipientName
+                              Email: emailRecipientEmail,
+                              Name: emailRecipientName
                           }
                       ],
                       Cc: ccReceivers,
