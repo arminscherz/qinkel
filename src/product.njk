@@ -60,7 +60,7 @@ permalink: /{{ price.product.name | slug}}.html
               <b>lieferbar</b>
               <br/><br/>
               <input type="hidden" value="{{ price.id }}" name="price_id" class="hidden"/>
-              <button class="cta-button" type="submit">Zur Kassa gehen</button>
+              <button class="u-border-none u-btn u-custom-color-4 u-hover-palette-4-light-1 u-radius" type="submit">Zur Kassa gehen</button>
             </form>
             <br/>
             <b>Produkt weiterempfehlen</b>  
@@ -142,10 +142,12 @@ permalink: /{{ price.product.name | slug}}.html
 
           // Function to handle touchend event
           function handleTouchEnd(event) {
-            if (touchEndX < touchStartX) {
+            const swipeTolerance = 20;
+
+            if (touchEndX + swipeTolerance < touchStartX) {
               // Swipe left, show next image
               showNextImage();
-            } else if (touchEndX > touchStartX) {
+            } else if (touchEndX > touchStartX + swipeTolerance) {
               // Swipe right, show previous image
               showPreviousImage();
             }
