@@ -4,8 +4,38 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{%- for page in collections.all %}
-  {% set absoluteUrl %}{{ page.url | url | absoluteUrl(metadata.url) }}{% endset %}
+  <url>
+    <loc>{{ metadata.url }}</loc>
+    <lastmod>{{ page.date | htmlDateString }}</lastmod>
+  </url>
+
+  <url>
+    <loc>{{ "Datenschutz" | slug | absoluteUrl(metadata.url) }}</loc>
+    <lastmod>{{ page.date | htmlDateString }}</lastmod>
+  </url>
+
+  <url>
+    <loc>{{ "Impressum" | slug | absoluteUrl(metadata.url) }}</loc>
+    <lastmod>{{ page.date | htmlDateString }}</lastmod>
+  </url>
+
+  <url>
+    <loc>{{ "Rueckgabe" | slug | absoluteUrl(metadata.url) }}</loc>
+    <lastmod>{{ page.date | htmlDateString }}</lastmod>
+  </url>
+
+  <url>
+    <loc>{{ "kontakt" | slug | absoluteUrl(metadata.url) }}</loc>
+    <lastmod>{{ page.date | htmlDateString }}</lastmod>
+  </url>
+
+  <url>
+    <loc>{{ "shop" | slug | absoluteUrl(metadata.url) }}</loc>
+    <lastmod>{{ page.date | htmlDateString }}</lastmod>
+  </url>
+
+{%- for price in prices %}
+  {% set absoluteUrl %}{{ price.product.name | slug | absoluteUrl(metadata.url) }}{% endset %}
   <url>
     <loc>{{ absoluteUrl }}</loc>
     <lastmod>{{ page.date | htmlDateString }}</lastmod>

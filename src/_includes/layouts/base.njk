@@ -1,35 +1,40 @@
+216 Magnetkugeln, Geschicklichkeitsspiel, 3D-Puzzle, Geschenk, kaufen
+216 Qinkel Magnetkugeln zum selber Spielen oder Schenken kaufen
+
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="de-AT">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <link rel="canonical" href="https://qinkel.netlify.app{{ page.url }}">
-    <meta name="keywords" content="Qinkel, Spielzeug, Geschicklichkeitsspiel, Magnetkugeln">
-    <meta name="description" content="Qinkel. Das spannende 3D Puzzel aus Neodym Magneten.">
-    <title>{{ renderData.title or title or metadata.title }}</title>
-    <meta name="description" content="{{ renderData.description or description or metadata.description }}">
-    <meta property="og:description" content="{{ renderData.description or description or metadata.description }}" />
+    <title>{{ price.product.name or title or metadata.title }}</title>
+    <link rel="canonical" href="{{ metadata.url }}{{ price.product.name | slug or slug }}">
     <link rel="stylesheet" href="/css/nicepage.css" media="screen">
     <link rel="stylesheet" href="/css/Startseite.css" media="screen">
-    <script class="u-script" type="text/javascript" src="/js/jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="/js/nicepage.js" defer=""></script>
-    <meta name="generator" content="Nicepage 6.3.1, nicepage.com">
-    <meta property="og:title" content="{{ renderData.title or title or metadata.title }}">
-    <meta property="og:image" content="https://www.qinkel.com/images/prodbild1.jpg">
-    <meta property="og:url" content="https://www.qinkel.com">
     <link id="u-theme-google-font" rel="stylesheet" href="/css/fonts.css">
     <link id="u-page-google-font" rel="stylesheet" href="/css/Startseite-fonts.css">
     <link rel="icon" href="/images/favicon.png" type="image/png" />
-    <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
-    
+    <script class="u-script" type="text/javascript" src="/js/jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="/js/nicepage.js" defer=""></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="author" content="{{ metadata.author.name }}">
+    <meta name="keywords" content="{{ price.product.metadata.seoKeywords or keywords or metadata.keywords }}">
+    <meta name="description" content="{{ price.product.metadata.seoDescription or description or metadata.description }}">
+    <meta name="theme-color" content="#222589">
+    <meta data-intl-tel-input-cdn-path="intlTelInput/">
+
+    <meta property="og:description" content="{{ price.product.metadata.seoDescription or description or metadata.description }}" />
+    <meta property="og:title" content="{{ price.product.name or title or metadata.title }}">
+    <meta property="og:image" content="{{ metadata.url }}{{ price.product.mainImage or "/images/prodbild1.jpg" }}">
+    <meta property="og:url" content="{{ metadata.url }}{{ page.url }}">
+    <meta property="og:type" content="website">
+
     <script type="application/ld+json">{
       "@context": "http://schema.org",
       "@type": "Organization",
       "name": "Qinkel",
       "logo": "/images/Logo.png"
     }</script>
-    <meta name="theme-color" content="#222589">
-    <meta property="og:type" content="website">
+
 
     <script>
       function gdprConfirmed() {
@@ -50,10 +55,6 @@
       ".replace(/gascript/g, 'script'));
       }
     </script>
-
-    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/9f0e1a607e01ca48c99fd77c1/44f2954b7763f6c8db489e616.js");
-    </script>
-    <meta data-intl-tel-input-cdn-path="intlTelInput/">
   </head>
 
   <!--body data-home-page="Startseite.html" data-home-page-title="Startseite" data-path-to-root="./" data-include-products="false" class="u-body u-xl-mode" data-lang="de"-->
@@ -219,15 +220,6 @@
         </button>
       </div>
     </section>
-
-    <script>
-      document.getElementById('carousel_d559').addEventListener('scroll', function(event) {
-        // Handle scroll event on the overlay
-        console.log('Overlay scrolled');
-        // Prevent the event from bubbling up to parent elements
-        event.stopPropagation();
-      });
-    </script>>
 
     <style>
       .u-dialog-section-12 .u-image-1 {

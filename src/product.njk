@@ -4,11 +4,6 @@ pagination:
   data: prices
   size: 1
   alias: price
-tags:
-  - nav
-navtitle: Shop
-title: "Qinkel Magnetkugeln - Shop"
-description: "JAM-Stack Webshop"
 date: 2024-04-28
 permalink: /{{ price.product.name | slug}}.html
 ---
@@ -177,4 +172,27 @@ permalink: /{{ price.product.name | slug}}.html
 
       </div>
     </section>
+
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org/",
+      "@type": "Product",
+      "name": "{{ price.product.name | slug}}",
+      "image": "{{ metadata.url }}{{ price.product.mainImage }}",
+      "description": "{{ price.product.description }}",
+      "brand": {
+        "@type": "Brand",
+        "name": "Qinkel"
+      },
+      "offers": {
+          "@type": "Offer",
+          "url": "{{ metadata.url }}{{ price.product.name | slug}}",
+          "itemCondition": "http://schema.org/NewCondition",
+          "availability": "https://schema.org/LimitedAvailability",
+          "priceCurrency": "EUR",
+          "price": "{{ price.unit_amount / 100 }}",
+          "priceValidUntil": "{{ price.product.metadata.preisGueltigBis }}"
+        }
+    }
+    </script>
 

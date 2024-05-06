@@ -1,17 +1,11 @@
 {
   "title": "Qinkel Magnetkugeln",
   "url": "https://qinkel.netlify.app/",
-  "description": "Qinkel. Das spannende 3D Puzzel aus Neodym Magneten.",
-  "feed": {
-    "subtitle": "Magnetkugeln und Geschicklichkeitsspiele von Qinkel",
-    "filename": "feed.xml",
-    "path": "/feed/feed.xml",
-    "url": "https://qinkel.netlify.app/feed/feed.xml",
-    "id": "https://qinkel.netlify.app/"
-  },
+  "description": "Qinkel. Das spannende 3D Puzzle aus Neodym Magneten.",
+  "keywords": "Qinkel, Geschenk, Geschicklichkeitsspiel, Magnetkugeln, 3d-Puzzle",
   "author": {
-    "name": "Sia Karamalegos & Armin Scherz",
-    "email": "armin.scherz@spiralup.at"
+    "name": "SpiralUp! GmbH",
+    "email": "office@spiralup.at"
   },
   "domain": "qinkel.netlify.app"
 }

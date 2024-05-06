@@ -1,43 +1,36 @@
 ---
 layout: layouts/base.njk
-tags:
-  - nav
-navtitle: Shop
 title: "Qinkel Magnetkugeln - Shop"
-description: "JAM-Stack Webshop"
+description: "Überblick über Produkte im Qinkel Magnetkugeln Webshop"
+slug: "shop"
 date: 2024-04-28
 ---
-
-{% set introHeading = title %} {% set introSummary %}{{ content | safe }}{%
-endset %}
-
-
-    <section class="u-align-center u-clearfix u-section-3" style="background: white;">
-      <!--div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl u-sheet-1"-->
-      <div class="u-clearfix u-sheet">
-        {% if prices.length %}
-        <div class="u-expanded-width u-list u-list-1">
-          <div class="u-repeater u-repeater-1">
-            {% for price in prices %}
-              <a href="/{{ price.product.name | slug}}.html">
-                <div class="u-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-1" style="margin-top: 20px; margin-bottom: 20px; margin-right: 20px; margin-left: 20px;">
-                  <div class="u-container-layout u-similar-container u-container-layout-1">
-                    <div class="img-hover-zoom">
-                      <img src="{{ price.product.metadata.mainImage }}" title="{{ price.product.name }}" alt="{{ price.product.name }}" class="grid-product__picture" srcset="{{ price.product.metadata.mainImage }} 1x, {{ price.product.metadata.mainImage }} 2x" style="width: 100%;">
-                    </div>
-                    <div class="img-text-blue">
-                      <p>{{ price.product.name }}</p>
-                      <!--p class="u-text u-text-palette-1-dark-2 u-text-6">{{ price.product.name }}</p-->
-                    </div>
-
-                    <h4 class="u-text u-text-palette-1-dark-2 u-text-7">{{ price.unit_amount | convertCentsToEuros }}</h4>
+  <section class="u-align-center u-clearfix u-section-3" style="background: white;">
+    <!--div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl u-sheet-1"-->
+    <div class="u-clearfix u-sheet">
+      {% if prices.length %}
+      <div class="u-expanded-width u-list u-list-1">
+        <div class="u-repeater u-repeater-1">
+          {% for price in prices %}
+            <a href="/{{ price.product.name | slug}}.html">
+              <div class="u-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-1" style="margin-top: 20px; margin-bottom: 20px; margin-right: 20px; margin-left: 20px;">
+                <div class="u-container-layout u-similar-container u-container-layout-1">
+                  <div class="img-hover-zoom">
+                    <img src="{{ price.product.metadata.mainImage }}" title="{{ price.product.name }}" alt="{{ price.product.name }}" class="grid-product__picture" srcset="{{ price.product.metadata.mainImage }} 1x, {{ price.product.metadata.mainImage }} 2x" style="width: 100%;">
                   </div>
+                  <div class="img-text-blue">
+                    <p>{{ price.product.name }}</p>
+                    <!--p class="u-text u-text-palette-1-dark-2 u-text-6">{{ price.product.name }}</p-->
+                  </div>
+
+                  <h4 class="u-text u-text-palette-1-dark-2 u-text-7">{{ price.unit_amount | convertCentsToEuros }}</h4>
                 </div>
-              </a>
-            {% endfor %}
-          </div>
+              </div>
+            </a>
+          {% endfor %}
         </div>
-        {% endif %}
       </div>
-    </section>
+      {% endif %}
+    </div>
+  </section>
 

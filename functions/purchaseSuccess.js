@@ -52,21 +52,21 @@ exports.handler = async function (event, context) {
       const itemName = product.name;
 
 
-      const emailSenderEmail = "noreply@serbliss.at";
-      const emailSenderName = "Qinkel JAM-Stack Shop";
+      const emailSenderEmail = process.env.SENDER_EMAIL;
+      const emailSenderName = process.env.SENDER_NAME;
 
-      const emailReceipientEmail = "armin.scherz@spiralup.at";
-      const emailReceipientName = "Qinkel Fullfillment Team";
+      const emailRecipientEmail = process.env.RECIPIENT_EMAIL;
+      const emailRecipientName = process.env.RECIPIENT_NAME;
 
-      const emailReplyToEmail = "office@qinkel.com";
-      const emailReplyToName = "Qinkel Office";
+      const emailReplyToEmail = process.env.RECIPIENT_EMAIL;
+      const emailReplyToName = process.env.RECIPIENT_NAME;
 
       const ccReceivers = [];
       //ccReceivers.push({ Email: senderEmail, Name: senderName });
 
-      const emailBetreff =`Neue TEST-Qinkel Bestellung`;
+      const emailBetreff =`${process.env.OPERATION_MODE}Neue Qinkel Bestellung`;
 
-      const emailText =`Neue TEST-Bestellung für:
+      const emailText =`${process.env.OPERATION_MODE}Neue Webshop-Bestellung für:
 Produkt: ${product.name}
 Anzahl: ${items.data[0].quantity}
 

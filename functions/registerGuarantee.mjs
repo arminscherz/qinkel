@@ -33,8 +33,7 @@ export default async ( request, context) => {
     const emailReplyToEmail = process.env.RECIPIENT_EMAIL;
     const emailReplyToName = process.env.RECIPIENT_NAME;
 
-    const emailBetreff =`${process.env.OPERATION_MODE}Neue Qinkel Bestellung`;
-    console.log("emailBetreff: ", emailBetreff);
+    const emailBetreff =`${process.env.OPERATION_MODE}Neue Qinkel Registrierung`;
 
     const emailText =`${process.env.OPERATION_MODE}Neue Garantie-Registrierung mit folgenden Daten:
 E-Mail: ${formData.get("EMAIL")}
@@ -44,7 +43,6 @@ Geburts-Monat: ${formData.get("BIRTHDAY[day]")}
 Geburts-Tag: ${formData.get("BIRTHDAY[month]")}
 EAN-Code: ${formData.get("EANCODE")}
 Gehört von: ${formData.get("LEADCHANNEL")}`;
-    console.log("emailText: ", emailText);
 
     // MailJet Basic Auth vorbereiten
     const api_key = process.env.MAILJET_API_KEY;
