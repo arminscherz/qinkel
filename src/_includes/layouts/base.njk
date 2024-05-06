@@ -2,7 +2,17 @@
 <html style="font-size: 16px;" lang="de-AT">
   <head>
     <title>{{ price.product.name or title or metadata.title }}</title>
-    <link rel="canonical" href="{{ metadata.url }}{{ price.product.name | slug or slug }}">
+    {%- set canonical = "" -%}
+    {%- if price.product.name -%} 
+      {%- set canonical -%} {{ metadata.url }}{{ price.product.name | slug }} {%- endset-%}
+    {%- else -%}
+      {%- if slug -%}
+        {%- set canonical -%} {{ metadata.url }}{{ slug }} {%- endset-%}
+      {%- else -%}
+        {%- set canonical = metadata.url -%}
+      {%- endif -%}
+    {%- endif -%}
+    <link rel="canonical" href="{{ canonical }}">
     <link rel="stylesheet" href="/css/nicepage.css" media="screen">
     <link rel="stylesheet" href="/css/Startseite.css" media="screen">
     <link id="u-theme-google-font" rel="stylesheet" href="/css/fonts.css">
@@ -88,9 +98,9 @@
                 <ul class="u-nav u-spacing-20 u-unstyled u-nav-1">
                   <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base" href="/" style="padding: 10px;">Startseite</a>
                   </li>
-                  <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base" href="/Shop" style="padding: 10px;">Shop</a>
+                  <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base" href="/shop.html" style="padding: 10px;">Shop</a>
                   </li>
-                  <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base" href="/Kontakt" style="padding: 10px;">Kontakt</a>
+                  <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base" href="/kontakt.html" style="padding: 10px;">Kontakt</a>
                   </li>
                 </ul>
               </div>
@@ -101,9 +111,9 @@
                     <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
                       <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/">Startseite</a>
                       </li>
-                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/Shop">Shop</a>
+                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/shop.html">Shop</a>
                       </li>
-                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/Kontakt">Kontakt</a>
+                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/kontakt.html">Kontakt</a>
                       </li>
                     </ul>
                   </div>
