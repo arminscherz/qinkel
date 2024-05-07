@@ -12,7 +12,7 @@ date: "2024-04-28"
       {% if prices.length %}
       <div class="u-expanded-width u-list u-list-1">
         <div class="u-repeater u-repeater-1">
-          {% for price in prices %}
+          {% for price in prices | sort(attribute="unit_amount") %}
             <a href="/{{ price.product.name | slug}}.html">
               <div class="u-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-1" style="margin-top: 20px; margin-bottom: 20px; margin-right: 20px; margin-left: 20px;">
                 <div class="u-container-layout u-similar-container u-container-layout-1">
