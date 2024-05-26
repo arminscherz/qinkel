@@ -10,7 +10,8 @@ async function getPrices() {
   const response = await stripe.prices.list({
     expand: ["data.product"],
   });
-  return response.data.filter(price => price.active);
+  console.log("prices:", response.data);
+  return response.data.filter(price => price.product.active);
 }
 
 module.exports = async function () {

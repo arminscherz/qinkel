@@ -84,6 +84,9 @@ ${eventObject.customer_details.address.state}, ${eventObject.customer_details.ad
       const api_secret = process.env.MAILJET_SECRET_KEY;
       const auth = 'Basic ' + Buffer.from( api_key + ':' + api_secret).toString('base64');
 
+	  console.log("emailRecipientEmail: ", emailRecipientEmail)';
+	  console.log("emailRecipientName: ", emailRecipientName)';	  
+	  
       // Freigabe-Email per MailJet senden
       const response = await fetch(
       'https://api.mailjet.com/v3.1/send', 
@@ -122,7 +125,7 @@ ${eventObject.customer_details.address.state}, ${eventObject.customer_details.ad
       console.log('response: ', response);
 
       if (!response.ok) {
-        throw new Error('Fehler beim Versenden durch Mailjet');
+        throw new Error('Fehler beim E-Mail Versand durch Mailjet');
       }
 
       console.log('Email sent successfully!');
