@@ -40,7 +40,7 @@ exports.handler = async function (event, context) {
       },
     shipping_options: [
       {
-        shipping_rate: "shr_1PAZyiGxCWD7dpD1lgVV8fKq",
+        shipping_rate: "shr_1PO3blLXwcN54ttFDAec0rbb",
       }
     ],
   });
