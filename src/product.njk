@@ -55,6 +55,7 @@ permalink: /{{ price.product.name | slug}}.html
               <b>lieferbar</b>
               <br/><br/>
               <input type="hidden" value="{{ price.id }}" name="price_id" class="hidden"/>
+              <input type="hidden" value="{{ shippingRates[0].id }}" name="shipping_rate_id" class="hidden"/>
               <button class="u-border-none u-btn u-custom-color-4 u-hover-palette-4-light-1 u-radius" type="submit">Zur Kassa gehen</button>
             </form>
             <br/>

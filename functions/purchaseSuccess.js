@@ -1,33 +1,21 @@
-
-const environment = process.env.CONTEXT;
-
-const environmentKeys = {
-  production: {
-    STRIPE_KEY: process.env.STRIPE_SECRET_KEY,
-    WEBHOOK_KEY: process.env.STRIPE_WEBHOOK_SECRET,
-  },
-  other: {
-    STRIPE_KEY: process.env.STRIPE_TEST_KEY,
-    WEBHOOK_KEY: process.env.STRIPE_WEBHOOK_SECRET_TEST,
-  },
-};
-const apiKeys =
-  environment !== "production"
-    ? environmentKeys.other
-    : environmentKeys.production;
-const stripe = require("stripe")(apiKeys.STRIPE_KEY);
-
 exports.handler = async function (event, context) {
-  console.log("purchaseSuccess START");
-
-  const { body, headers } = event;
-
   try {
+
+    console.log("purchaseSuccess START");
+
+    console.log("STRIPE_SECRET_KEY: ", process.env.STRIPE_SECRET_KEY);
+
+    const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+
+    const { body, headers } = event;
+
+    console.log("STRIPE_WEBHOOK_SECRET: ", process.env.STRIPE_WEBHOOK_SECRET);
+
     // 1. Check that the request is really from Stripe
     const stripeEvent = stripe.webhooks.constructEvent(
       body,
       headers["stripe-signature"],
-      apiKeys.WEBHOOK_KEY
+      process.env.STRIPE_WEBHOOK_SECRET
     );
 
     // 2. Handle successful payments
@@ -129,8 +117,8 @@ ${eventObject.customer_details.address.state}, ${eventObject.customer_details.ad
       }
 
       console.log('Email sent successfully!');
-
-      console.log("purchaseSuccess END");
+    } else {
+      console.log('stripeEvent.type doesnt fit: ', stripeEvent.type);
     }
 
     // Response sent back to stripe - everything is ok!
@@ -138,6 +126,8 @@ ${eventObject.customer_details.address.state}, ${eventObject.customer_details.ad
       statusCode: 200,
       body: JSON.stringify({ received: true }),
     };
+
+    console.log("purchaseSuccess END");
   } catch (err) {
     console.log(`Stripe webhook failed with ${err}`);
 

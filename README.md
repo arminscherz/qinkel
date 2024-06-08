@@ -6,12 +6,13 @@ Frameworks used [Eleventy](https://github.com/11ty/eleventy) 11ty blog starter a
 
 
 ## Dev & Test Tools
-- Stripe CLI https://docs.stripe.com/stripe-cli
+- Stripe CLI installieren https://docs.stripe.com/stripe-cli
+- Bei Stripe-Konto anmelden - Terminal-Kommando: stripe login 
 - Stipe Events (z.B. Checkout complete) an lokalen Endpunkt weiterleiten: (https://docs.stripe.com/webhooks#test-webhook)
   - Shell Kommando: stripe listen --forward-to localhost:8888/api/purchaseSuccess 
   - Diese Kommado liefert das webhook signing secret
-  - Dieses in der Env-Variable STRIPE_WEBHOOK_SECRET_TEST eintragen
-  - Webshop in zweitem Terminal öffnen
+  - Dieses in der ENV-Variable STRIPE_WEBHOOK_SECRET für den "Local development (Netlify CLI)"-Deployment Context eintragen
+  - Webshop in zweitem Terminal-Fenster öffnen
 - Test-Kreditkarte 4242 4242 4242 4242 , Expiry Date in der Zukunft, CVS 123
 - Stripe Events erneut senden: (https://docs.stripe.com/cli/events/resend)
   - Im Stripe Listen - Fenster werden event ids gelogged
